@@ -9,32 +9,27 @@ from .. import read_sql
 
 @pytest.fixture(scope="module")  # type: ignore
 def postgres_url() -> str:
-    conn = os.environ["POSTGRES_URL"]
-    return conn
+    return os.environ["POSTGRES_URL"]
 
 
 @pytest.fixture(scope="module")  # type: ignore
 def postgres_url_tls() -> str:
-    conn = os.environ["POSTGRES_URL_TLS"]
-    return conn
+    return os.environ["POSTGRES_URL_TLS"]
 
 
 @pytest.fixture(scope="module")  # type: ignore
 def postgres_rootcert() -> str:
-    cert = os.environ["POSTGRES_ROOTCERT"]
-    return cert
+    return os.environ["POSTGRES_ROOTCERT"]
 
 
 @pytest.fixture(scope="module")  # type: ignore
 def postgres_sslcert() -> str:
-    cert = os.environ["POSTGRES_SSLCERT"]
-    return cert
+    return os.environ["POSTGRES_SSLCERT"]
 
 
 @pytest.fixture(scope="module")  # type: ignore
 def postgres_sslkey() -> str:
-    key = os.environ["POSTGRES_SSLKEY"]
-    return key
+    return os.environ["POSTGRES_SSLKEY"]
 
 
 @pytest.mark.xfail

@@ -9,8 +9,7 @@ from .. import partition_sql
 
 @pytest.fixture(scope="module")  # type: ignore
 def postgres_url() -> str:
-    conn = os.environ["POSTGRES_URL"]
-    return conn
+    return os.environ["POSTGRES_URL"]
 
 
 def test_partition_sql(postgres_url: str) -> None:

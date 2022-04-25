@@ -9,8 +9,7 @@ from .. import read_sql
 
 @pytest.fixture(scope="module")  # type: ignore
 def clickhouse_url() -> str:
-    conn = os.environ["CLICKHOUSE_URL"]
-    return conn
+    return os.environ["CLICKHOUSE_URL"]
 
 
 @pytest.mark.skipif(

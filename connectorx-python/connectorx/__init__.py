@@ -56,8 +56,7 @@ def get_meta(
     """
     conn, protocol = rewrite_conn(conn, protocol)
     result = _get_meta(conn, protocol, query)
-    df = reconstruct_pandas(result)
-    return df
+    return reconstruct_pandas(result)
 
 
 def partition_sql(
@@ -296,5 +295,4 @@ def reconstruct_pandas(df_infos: Dict[str, Any]):
     block_manager = pd.core.internals.BlockManager(
         blocks, [pd.Index(headers), pd.RangeIndex(start=0, stop=nrows, step=1)]
     )
-    df = pd.DataFrame(block_manager)
-    return df
+    return pd.DataFrame(block_manager)

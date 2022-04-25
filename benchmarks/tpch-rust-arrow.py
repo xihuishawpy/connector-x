@@ -18,12 +18,9 @@ from docopt import docopt
 
 
 def get_sqls(table: str, count: int) -> List[str]:
-    sqls = []
     split = np.linspace(0, 60000000, num=count + 1, endpoint=True, dtype=int)
-    for i in range(len(split) - 1):
-
-        sqls.append(
-            f"""select  l_orderkey,
+    return [
+        f"""select  l_orderkey,
                 l_partkey,
                 l_suppkey,
                 l_linenumber,
@@ -39,8 +36,8 @@ def get_sqls(table: str, count: int) -> List[str]:
                 l_shipinstruct,
                 l_shipmode,
                 l_comment from {table} where l_orderkey > {split[i]} and l_orderkey <= {split[i+1]}"""
-        )
-    return sqls
+        for i in range(len(split) - 1)
+    ]
 
 
 def field_to_json(field):
@@ -139,7 +136,7 @@ if __name__ == "__main__":
         queries,
         json.dumps(schema_to_json(SCHEMA)),
     )
-    print(f"finish read_pg:", time.time() - then)
+    print("finish read_pg:", time.time() - then)
 
     tb = pa.Table.from_arrays(
         [

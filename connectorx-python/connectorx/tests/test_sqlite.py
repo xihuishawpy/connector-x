@@ -10,8 +10,7 @@ from .. import read_sql
 
 @pytest.fixture(scope="module")  # type: ignore
 def sqlite_db() -> str:
-    conn = os.environ["SQLITE_URL"]
-    return conn
+    return os.environ["SQLITE_URL"]
 
 
 def test_sqlite_without_partition(sqlite_db: str) -> None:

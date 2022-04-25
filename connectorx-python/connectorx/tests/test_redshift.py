@@ -10,8 +10,7 @@ from .. import read_sql
 
 @pytest.fixture(scope="module")  # type: ignore
 def redshift_url() -> str:
-    conn = os.environ["REDSHIFT_URL"]
-    return conn
+    return os.environ["REDSHIFT_URL"]
 
 
 @pytest.mark.skipif(not os.environ.get("REDSHIFT_URL"), reason="Do not test Redshift unless `REDSHIFT_URL` is set")
