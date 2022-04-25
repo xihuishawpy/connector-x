@@ -9,8 +9,7 @@ from .. import read_sql
 
 @pytest.fixture(scope="module")  # type: ignore
 def bigquery_url() -> str:
-    conn = os.environ["BIGQUERY_URL"]
-    return conn
+    return os.environ["BIGQUERY_URL"]
 
 
 @pytest.mark.skipif(

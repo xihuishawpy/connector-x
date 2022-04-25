@@ -21,12 +21,9 @@ from sqlalchemy import create_engine
 
 
 def get_sqls(table: str, count: int) -> List[str]:
-    sqls = []
     split = np.linspace(0, 60000000, num=count + 1, endpoint=True, dtype=int)
-    for i in range(len(split) - 1):
-
-        sqls.append(
-            f"""SELECT
+    return [
+        f"""SELECT
                     l_orderkey,
                     l_partkey,
                     l_suppkey,
@@ -45,8 +42,8 @@ def get_sqls(table: str, count: int) -> List[str]:
                     l_comment
                 FROM {table} 
                 WHERE l_orderkey > {split[i]} and l_orderkey <= {split[i+1]}"""
-        )
-    return sqls
+        for i in range(len(split) - 1)
+    ]
 
 
 def func(id: int, conn: str, query: str) -> Any:

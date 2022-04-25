@@ -9,8 +9,7 @@ from .. import get_meta
 
 @pytest.fixture(scope="module")  # type: ignore
 def postgres_url() -> str:
-    conn = os.environ["POSTGRES_URL"]
-    return conn
+    return os.environ["POSTGRES_URL"]
 
 def test_get_meta(postgres_url: str) -> None:
     query = "SELECT * FROM test_table limit 10"

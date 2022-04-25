@@ -9,9 +9,8 @@ from .. import read_sql
 
 @pytest.fixture(scope="module")  # type: ignore
 def mysql_url() -> str:
-    conn = os.environ["MYSQL_URL"]
     # conn = os.environ["MARIADB_URL"]
-    return conn
+    return os.environ["MYSQL_URL"]
 
 
 def test_mysql_without_partition(mysql_url: str) -> None:

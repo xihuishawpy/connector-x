@@ -9,8 +9,7 @@ from .. import read_sql
 
 @pytest.fixture(scope="module")  # type: ignore
 def oracle_url() -> str:
-    conn = os.environ["ORACLE_URL"]
-    return conn
+    return os.environ["ORACLE_URL"]
 
 @pytest.mark.xfail
 @pytest.mark.skipif(

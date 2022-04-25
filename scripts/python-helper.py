@@ -56,10 +56,7 @@ def main() -> None:
         if METADATA["platform"] == "windows":
             arch = "win_amd64"
             # abitag = METADATA["abi_tag"] # this does not work on windows
-            if pyver == "37":
-                abitag = "37m"
-            else:
-                abitag = pyver
+            abitag = "37m" if pyver == "37" else pyver
         elif METADATA["platform"] == "linux":
             arch = "manylinux2014_x86_64"
             abitag = METADATA["abi_tag"]
